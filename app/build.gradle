@@ -1,23 +1,23 @@
-apply plugin: 'com.android.model.application'
-model {
-    android {
-        compileSdkVersion = 23
-        buildToolsVersion = "23.0.2"
+apply plugin: 'com.android.application'
 
-        defaultConfig.with {
-            applicationId = "com.zqc.opencc.android"
-            minSdkVersion.apiLevel = 15
-            targetSdkVersion.apiLevel = 23
-        }
-    }
+android {
+    compileSdkVersion = 27
+    buildToolsVersion = "27.0.3"
 
-    android.buildTypes {
-        release {
-            minifyEnabled = false
-            proguardFiles.add(file('proguard-rules.txt'))
-        }
+    defaultConfig {
+        applicationId "com.zqc.opencc.android"
+        minSdkVersion 15
+        targetSdkVersion 27
     }
 }
+
+android.buildTypes {
+    release {
+        minifyEnabled = false
+        proguardFiles.add(file('proguard-rules.txt'))
+    }
+}
+
 
 repositories {
     maven {
@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    compile project(':lib-opencc-android')
-    compile 'com.android.support:appcompat-v7:23.2.0'
+    implementation project(':lib-opencc-android')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
     //compile 'com.zqc.opencc.android.lib:lib-opencc-android:0.8.0@aar'
 }
