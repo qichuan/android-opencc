@@ -1,17 +1,35 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
-LOCAL_MODULE    := opencc-android
-LOCAL_LDLIBS += -latomic -llog -landroid
 
-#traverse all the directory and subdirectory
-define walk
-  $(wildcard $(1)) $(foreach e, $(wildcard $(1)/*), $(call walk, $(e)))
-endef
+LOCAL_MODULE    := OpenCC
+LOCAL_C_INCLUDES += src/main/jni/OpenCC/deps/darts-clone/
+LOCAL_C_INCLUDES += src/main/jni/OpenCC/deps/rapidjson-0.11/
 
-#find all the file recursively under jni/
-ALLFILES = $(call walk, $(LOCAL_PATH))
-FILE_LIST := $(filter %.cpp, $(ALLFILES))
+LOCAL_SRC_FILES := \
+OpenCC/src/BinaryDict.cpp \
+OpenCC/src/Config.cpp \
+OpenCC/src/Conversion.cpp\
+OpenCC/src/ConversionChain.cpp \
+OpenCC/src/Converter.cpp \
+OpenCC/src/DartsDict.cpp \
+OpenCC/src/Dict.cpp \
+OpenCC/src/DictEntry.cpp \
+OpenCC/src/DictGroup.cpp \
+OpenCC/src/MaxMatchSegmentation.cpp \
+OpenCC/src/SimpleConverter.cpp \
+OpenCC/src/TextDict.cpp \
+OpenCC/src/UTF8Util.cpp
 
-LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
+include $(BUILD_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_PRELINK_MODULE := false
+
+LOCAL_MODULE 	:= ChineseConverter
+LOCAL_C_INCLUDES += src/main/jni/OpenCC/src/
+LOCAL_STATIC_LIBRARIES := OpenCC
+LOCAL_LDLIBS  += -llog -landroid
+
+LOCAL_SRC_FILES := chineseconverter.cpp
 
 include $(BUILD_SHARED_LIBRARY)

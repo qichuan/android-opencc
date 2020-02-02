@@ -1,7 +1,7 @@
 #include <jni.h>
 #include <malloc.h>
-#include "opencc/Converter.hpp"
-#include "opencc/Config.hpp"
+#include "Converter.hpp"
+#include "Config.hpp"
 
 opencc::ConverterPtr converter;
 opencc::Config config;

@@ -22,7 +22,7 @@ public class ChineseConverter {
      * @return the converted text
      */
     public static String convert(String text, ConversionType conversionType, Context context) {
-        File lastDataFile = new File(context.getFilesDir() + "/openccdata/zFinished");
+        File lastDataFile = new File(context.getFilesDir() + "/openccdata/zFinished2");
         if (!lastDataFile.exists()) {
             initialize(context);
         }
@@ -55,9 +55,6 @@ public class ChineseConverter {
 
     private static void copyFolder(String folderName, Context context) {
         File fileFolderOnDisk = new File(context.getFilesDir() + "/" + folderName);
-        if (fileFolderOnDisk.exists()) {
-            return;
-        }
         AssetManager assetManager = context.getAssets();
         String[] files = null;
         try {
@@ -112,7 +109,6 @@ public class ChineseConverter {
     }
 
     static {
-        System.loadLibrary("c++_shared");
-        System.loadLibrary("opencc-android");
+        System.loadLibrary("ChineseConverter");
     }
 }
