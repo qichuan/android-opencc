@@ -3,19 +3,19 @@
   "segmentation": {
     "type": "mmseg",
     "dict": {
-      "type": "text",
-      "file": "STPhrases.txt"
+      "type": "ocd",
+      "file": "STPhrases.ocd"
     }
   },
   "conversion_chain": [{
     "dict": {
       "type": "group",
       "dicts": [{
-        "type": "text",
-        "file": "STPhrases.txt"
+        "type": "ocd",
+        "file": "STPhrases.ocd"
       }, {
-        "type": "text",
-        "file": "STCharacters.txt"
+        "type": "ocd",
+        "file": "STCharacters.ocd"
       }]
     }
   }]
