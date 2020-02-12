@@ -26,7 +26,7 @@ in Simplified Chinese and using Mainland China terminology
 // Add the dependency
 dependencies {
     ...
-    implementation 'com.zqc.opencc.android.lib:lib-opencc-android:1.0.0'
+    implementation 'com.zqc.opencc.android.lib:lib-opencc-android:1.1.0'
 }
 ```
 
