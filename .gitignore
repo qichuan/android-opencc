@@ -9,3 +9,5 @@
 **/build/*
 **/.externalNativeBuild
 **/.cxx
+.project
+.settings/*
