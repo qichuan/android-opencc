@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: check out code recursively
-      uses: actions/checkout@v2
+      uses: actions/checkout@v1
       with:
         submodules: recursive
     - name: set up JDK 1.8
