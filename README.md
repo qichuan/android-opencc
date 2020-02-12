@@ -2,6 +2,14 @@
 
 An Android port to [OPENCC](https://github.com/BYVoid/OpenCC), a library to convert Simplified Chinese to Traditional Chinese and vice versa. In additional, it also adopts the regional vocabulary and terminology interchangeably during conversion among Mainland China Simplified Chinese, Taiwan Traditional Chinese and Hong Kong Traditional Chinese.
 
+## Note
+This project uses git submodules to download the source code from OpenCC, please use --recursive flag when cloning this project
+
+```
+ git clone git@github.com:qichuan/android-opencc.git --recursive
+
+```
+
 ## Example
 ```
 滑鼠裡面的矽二極體壞了，導致游標解析度降低。
