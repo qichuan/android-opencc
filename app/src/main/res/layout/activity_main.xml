@@ -9,12 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.zqc.opencc.android.MainActivity">
 
-    <Spinner
+    <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
-    <EditText
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,10 +22,10 @@
         android:layout_below="@id/spinner"
         android:text="@string/test_text" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Convert" />
+        android:text="@string/convert" />
 </RelativeLayout>

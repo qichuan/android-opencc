@@ -1,16 +1,21 @@
 <resources>
-    <string name="app_name">Android-OpenCC</string>
+    <string name="app_name">OpenCC</string>
     <string name="test_text">滑鼠裡面的矽二極體壞了，導致游標解析度降低\n我們在寮國的伺服器的硬碟需要使用網際網路演算法軟體解決非同步的問題。</string>
+    <string name="convert">Convert</string>
     <string-array name="conversion_type_array">
-        <item>臺灣正體到簡體,並轉爲大陸常用詞彙</item>
+        <item>香港繁體到簡體</item>
+        <item>香港繁體到繁體（OpenCC 標準）</item>
+        <item>日文新字體到繁體（OpenCC 標準，舊字體）</item>
         <item>簡體到香港繁體</item>
         <item>簡體到繁體</item>
         <item>簡體到臺灣正體</item>
-        <item>簡體到繁體,並轉換爲臺灣常用詞彙</item>
-        <item>繁體到香港繁體</item>
+        <item>簡體到繁體（臺灣正體標準）並轉換爲臺灣常用詞彙</item>
+        <item>繁體（OpenCC 標準）到香港繁體</item>
+        <item>繁體（OpenCC 標準，舊字體）到日文新字體</item>
         <item>繁體到簡體</item>
         <item>繁體臺灣正體</item>
         <item>臺灣正體到簡體</item>
-        <item>香港繁體到簡體</item>
+        <item>繁體（臺灣正體標準）到簡體並轉換爲中國大陸常用詞彙</item>
+        <item>臺灣正體到繁體（OpenCC 標準）</item>
     </string-array>
 </resources>
