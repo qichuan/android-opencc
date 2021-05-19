@@ -1,81 +1,15 @@
 apply plugin: 'com.android.library'
-
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'lib-opencc-android'
-
-    publishedGroupId = 'com.zqc.opencc.android.lib'
-    libraryName = 'lib-opencc-android'
-    artifact = 'lib-opencc-android'
-    libraryDescription = 'An Android library project for conversion between Traditional and Simplified Chinese'
-
-    siteUrl = 'https://github.com/qichuan/android-opencc'
-    gitUrl = 'https://github.com/qichuan/android-opencc.git'
-    libraryVersion = '1.1.0'
-
-    developerId = 'qichuan'
-    developerName = 'Zhang Qichuan'
-    developerEmail = 'qichuan@zhangqichuan.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-
 android {
-    compileSdkVersion = 29
-    buildToolsVersion = "29.0.2"
+    compileSdkVersion = 30
+    buildToolsVersion = "30.0.3"
 
     defaultConfig {
         minSdkVersion 10
-        targetSdkVersion 29
+        targetSdkVersion 30
     }
     externalNativeBuild {
         ndkBuild {
             path 'src/main/jni/Android.mk'
-        }
-    }
-}
-
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply plugin: 'com.jfrog.bintray'
-
-version = libraryVersion
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets
-}
-
-artifacts {
-    archives sourcesJar
-}
-
-// Bintray
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-
-    configurations = ['archives']
-    pkg {
-        repo = bintrayRepo
-        name = bintrayName
-        desc = libraryDescription
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = allLicenses
-        publish = true
-        publicDownloadNumbers = true
-        version {
-            desc = libraryDescription
-            gpg {
-                sign = false //Determines whether to GPG sign the files. The default is false
-                // passphrase = properties.getProperty("bintray.gpg.password")
-                //Optional. The passphrase for GPG signing'
-            }
         }
     }
 }
