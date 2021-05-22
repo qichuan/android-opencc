@@ -16,8 +16,11 @@ OpenCC/src/Dict.cpp \
 OpenCC/src/DictEntry.cpp \
 OpenCC/src/DictGroup.cpp \
 OpenCC/src/MaxMatchSegmentation.cpp \
+OpenCC/src/PhraseExtract.cpp \
+OpenCC/src/Segmentation.cpp \
 OpenCC/src/SimpleConverter.cpp \
 OpenCC/src/TextDict.cpp \
+OpenCC/src/UTF8StringSlice.cpp \
 OpenCC/src/UTF8Util.cpp
 
 include $(BUILD_STATIC_LIBRARY)
