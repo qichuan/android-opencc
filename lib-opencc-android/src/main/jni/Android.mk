@@ -3,7 +3,8 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE    := OpenCC
 LOCAL_C_INCLUDES += src/main/jni/OpenCC/deps/darts-clone/
-LOCAL_C_INCLUDES += src/main/jni/OpenCC/deps/rapidjson-0.11/
+LOCAL_C_INCLUDES += src/main/jni/OpenCC/deps/marisa-0.2.6/include/
+LOCAL_C_INCLUDES += src/main/jni/OpenCC/deps/rapidjson-1.1.0/
 
 LOCAL_SRC_FILES := \
 OpenCC/src/BinaryDict.cpp \
