@@ -11,9 +11,14 @@ import android.widget.Spinner;
 import com.zqc.opencc.android.lib.ChineseConverter;
 import com.zqc.opencc.android.lib.ConversionType;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class MainActivity extends AppCompatActivity {
 
     private ConversionType currentConversionType = ConversionType.TW2SP;
+
+    ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,13 +76,14 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText textView = findViewById(R.id.text);
 
-        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String originalText = textView.getText().toString();
-                textView.setText(ChineseConverter.convert(originalText,
-                        currentConversionType, getApplicationContext()));
-            }
+        findViewById(R.id.btn).setOnClickListener(v -> {
+            String originalText = textView.getText().toString();
+            Runnable runnable = () -> {
+                final String converted = ChineseConverter.convert(originalText,
+                        currentConversionType, getApplicationContext());
+                textView.post(() -> textView.setText(converted));
+            };
+            executorService.execute(runnable);
         });
     }
 }
