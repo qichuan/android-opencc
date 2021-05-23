@@ -1,6 +1,8 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
+LOCAL_CFLAGS    := -DOPENCC_ENABLE_DARTS
+
 LOCAL_MODULE    := OpenCC
 LOCAL_C_INCLUDES += src/main/jni/OpenCC/deps/darts-clone/
 LOCAL_C_INCLUDES += src/main/jni/OpenCC/deps/marisa-0.2.6/include/
