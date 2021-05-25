@@ -1,37 +1,38 @@
 package com.zqc.opencc.andorid.lib;
 
-import android.app.Application;
-import android.test.ApplicationTestCase;
+import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.zqc.opencc.android.lib.ChineseConverter;
 import com.zqc.opencc.android.lib.ConversionType;
 
-import junit.framework.Assert;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 /**
  * Created by zhangqichuan on 7/3/16.
  */
-public class ApplicationTest extends ApplicationTestCase<Application> {
+@RunWith(AndroidJUnit4.class)
+public class ApplicationTest {
 
-    private Application application;
+    private Context context;
 
-    public ApplicationTest() {
-        super(Application.class);
+    @Before
+    public void setUp() {
+        context = ApplicationProvider.getApplicationContext();
     }
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-        createApplication();
-        application = getApplication();
+    @After
+    public void tearDown() {
+        ChineseConverter.clearDictDataFolder(context);
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        ChineseConverter.clearDictDataFolder(application);
-        super.tearDown();
-    }
-
+    @Test
     public void testHK2S() {
         baseTest("虛偽歎息\n" +
                         "潮濕灶台\n" +
@@ -42,16 +43,30 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
                         "沙河涌汹涌的波浪", ConversionType.HK2S);
     }
 
+    @Test
+    public void testHK2T() {
+        baseTest("揾到食\n" + "偽裝者",
+                "搵到食\n" + "僞裝者", ConversionType.HK2T);
+    }
+
+    @Test
+    public void testJP2T() {
+        baseTest("七歳\n" + "漢字",
+                "七歲\n" + "漢字", ConversionType.JP2T);
+    }
+
+    @Test
     public void testS2HK() {
         baseTest("虚伪叹息\n" +
                         "潮湿灶台\n" +
                         "沙河涌汹涌的波浪",
 
-                "虛偽歎息\n" +
+                "虛偽嘆息\n" +
                         "潮濕灶台\n" +
                         "沙河涌洶湧的波浪", ConversionType.S2HK);
     }
 
+    @Test
     public void testS2T() {
         baseTest("夸夸其谈 夸父逐日\n" +
                         "我干什么不干你事。\n" +
@@ -70,10 +85,11 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
                         "請成相，世之殃，愚闇愚闇墮賢良。人主無賢，如瞽無相何倀倀！請布基，慎聖人，愚而自專事不治。主忌苟勝，羣臣莫諫必逢災。\n" +
                         "曾經有一份真誠的愛情放在我面前，我沒有珍惜，等我失去的時候我才後悔莫及。人事間最痛苦的事莫過於此。如果上天能夠給我一個再來一次得機會，我會對那個女孩子說三個字，我愛你。如果非要在這份愛上加個期限，我希望是，一萬年。\n" +
                         "新的理論被發現了。\n" +
-                        "鮎魚和鮎魚是一種生物。\n" +
+                        "鯰魚和鮎魚是一種生物。\n" +
                         "金胄不是金色的甲冑。", ConversionType.S2T);
     }
 
+    @Test
     public void testS2TW() {
         baseTest("着装污染虚伪发泄棱柱群众里面\n" +
                         "鲶鱼和鲇鱼是一种生物。",
@@ -82,6 +98,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
                         "鯰魚和鯰魚是一種生物。", ConversionType.S2TW);
     }
 
+    @Test
     public void testS2TWP() {
         baseTest("鼠标里面的硅二极管坏了，导致光标分辨率降低。\n" +
                         "我们在老挝的服务器的硬盘需要使用互联网算法软件解决异步的问题。\n" +
@@ -92,6 +109,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
                         "為什麼你在床裡面睡著？", ConversionType.S2TWP);
     }
 
+    @Test
     public void testT2S() {
         baseTest("曾經有一份真誠的愛情放在我面前，我沒有珍惜，等我失去的時候我才後悔莫及。人事間最痛苦的事莫過於此。如果上天能夠給我一個再來一次得機會，我會對那個女孩子說三個字，我愛你。如果非要在這份愛上加個期限，我希望是，一萬年。",
 
@@ -99,12 +117,14 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
                 ConversionType.T2S);
     }
 
+    @Test
     public void testTW2S() {
         baseTest("著裝著作汙染虛偽發洩稜柱群眾裡面",
 
                 "着装著作污染虚伪发泄棱柱群众里面", ConversionType.TW2S);
     }
 
+    @Test
     public void testTW2SP() {
         baseTest("滑鼠裡面的矽二極體壞了，導致游標解析度降低。\n" +
                         "我們在寮國的伺服器的硬碟需要使用網際網路演算法軟體解決非同步的問題。\n" +
@@ -116,7 +136,19 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
                 ConversionType.TW2SP);
     }
 
+    @Test
+    public void testT2JP() {
+        baseTest("七歲\n" + "漢字",
+                "七歳\n" + "漢字", ConversionType.T2JP);
+    }
+
+    @Test
+    public void testTW2T() {
+        baseTest("正體字\n",
+                "正體字\n", ConversionType.TW2T);
+    }
+
     private void baseTest(String originalText, String expectedText, ConversionType conversionType) {
-        Assert.assertEquals(expectedText, ChineseConverter.convert(originalText, conversionType, application));
+        Assert.assertEquals(expectedText, ChineseConverter.convert(originalText, conversionType, context));
     }
 }

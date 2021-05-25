@@ -1,3 +1,3 @@
 [submodule "lib-opencc-android/src/main/jni/OpenCC"]
 	path = lib-opencc-android/src/main/jni/OpenCC
-	url = https://github.com/BYVoid/OpenCC.git
+	url = git@github.com:qichuan/OpenCC.git
