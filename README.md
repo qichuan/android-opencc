@@ -22,11 +22,22 @@ will be converted to
 in Simplified Chinese and using Mainland China terminology
 
 # Installation
+
+Add it in your root build.gradle at the end of repositories:
+```
+allprojects {
+	repositories {
+	...
+	    maven { url 'https://jitpack.io' }
+	}
+}
+```
+
 ```
 // Add the dependency
 dependencies {
     ...
-    implementation 'com.zqc.opencc.android.lib:lib-opencc-android:1.1.0'
+	implementation 'com.github.qichuan:android-opencc:1.2.0'
 }
 ```
 
@@ -35,6 +46,8 @@ To use Chinese converter is easy, just call `ChineseConverter.convert(originalTe
 
 ## Supported conversation types
 - HK2S, Traditional Chinese (Hong Kong Standard) to Simplified Chinese 香港繁體（香港小學學習字詞表標準）到簡體
+- HK2T, Traditional Chinese (Hong Kong variant) to Traditional Chinese 香港繁體（香港小學學習字詞表標準）到繁體
+- JP2T, New Japanese Kanji (Shinjitai) to Traditional Chinese Characters (Kyūjitai) 日本漢字到繁體
 - S2HK, Simplified Chinese to Traditional Chinese (Hong Kong Standard) 簡體到香港繁體（香港小學學習字詞表標準）
 - S2T, Simplified Chinese to Traditional Chinese 簡體到繁體
 - S2TW, Simplified Chinese to Traditional Chinese (Taiwan Standard) 簡體到臺灣正體
@@ -43,6 +56,8 @@ To use Chinese converter is easy, just call `ChineseConverter.convert(originalTe
 - T2S, Traditional Chinese to Simplified Chinese 繁體到簡體
 - T2TW, Traditional Chinese to Traditional Chinese (Taiwan Standard) 繁體臺灣正體
 - TW2S, Traditional Chinese (Taiwan Standard) to Simplified Chinese 臺灣正體到簡體
+- T2JP, Traditional Chinese Characters (Kyūjitai) to New Japanese Kanji (Shinjitai) 繁體到日本漢字
+- TW2T, Traditional Chinese (Taiwan standard) to Traditional Chinese 臺灣正體到繁體
 - TW2SP, Traditional Chinese (Taiwan Standard) to Simplified Chinese with Mainland Chinese idiom 繁體（臺灣正體標準）到簡體並轉換爲中國大陸常用詞彙
 
 # Explanation
