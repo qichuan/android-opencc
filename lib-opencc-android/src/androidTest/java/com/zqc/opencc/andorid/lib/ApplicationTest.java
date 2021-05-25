@@ -44,6 +44,18 @@ public class ApplicationTest {
     }
 
     @Test
+    public void testHK2T() {
+        baseTest("揾到食\n" + "偽裝者",
+                "搵到食\n" + "僞裝者", ConversionType.HK2T);
+    }
+
+    @Test
+    public void testJP2T() {
+        baseTest("七歳\n" + "漢字",
+                "七歲\n" + "漢字", ConversionType.JP2T);
+    }
+
+    @Test
     public void testS2HK() {
         baseTest("虚伪叹息\n" +
                         "潮湿灶台\n" +
@@ -122,6 +134,18 @@ public class ApplicationTest {
                         "我们在老挝的服务器的硬盘需要使用互联网算法软件解决异步的问题。\n" +
                         "为什么你在床里面睡着？",
                 ConversionType.TW2SP);
+    }
+
+    @Test
+    public void testT2JP() {
+        baseTest("七歲\n" + "漢字",
+                "七歳\n" + "漢字", ConversionType.T2JP);
+    }
+
+    @Test
+    public void testTW2T() {
+        baseTest("正體字\n",
+                "正體字\n", ConversionType.TW2T);
     }
 
     private void baseTest(String originalText, String expectedText, ConversionType conversionType) {
