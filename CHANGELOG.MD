@@ -8,7 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unversioned]
 
 ### Added
-- Update OpenCC data
+- Update OpenCC dictionary data
+- Add hk2t support
+- Add jp2t support
+- Add t2jp support
+- Add tw2t support
+
+### Changed
+- Replace ocd files with ocd2 files
 
 ## [1.1.0] - 2020-02-12
 
